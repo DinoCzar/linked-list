@@ -148,7 +148,69 @@ function find(value) {
 function toString() {
 	const listArray = list.toArray();
 	const formattedArray = listArray.map((value) => `( ${value} )`).join(' -> ');
-	console.log(formattedArray)
+	console.log(formattedArray);
+}
+
+// Insert a new node with the provided value at the given index.
+function insertAt(value, index) {
+	const node = createNode(value);
+
+	if (index < 0 || index > list.length) {
+		return null;
+	}
+
+	if (index === 0) {
+		node.next = list.head;
+		list.head = node;
+		if (list.length === 0) {
+			list.tail = node;
+		}
+	} else if (index === list.length) {
+		list.tail.next = node;
+		list.tail = node;
+	} else {
+		let current = list.head;
+		for (let i = 0; i < index - 1; i++) {
+			current = current.next;
+		}
+		node.next = current.next;
+		current.next = node;
+	}
+
+	list.length++;
+	return node;
+}
+
+// Remove the node at the given index
+function removeAt(index) {
+	if (index < 0 || index >= list.length) {
+		return null; // or throw an error
+	}
+
+	let removedNode = null;
+
+	if (index === 0) {
+		removedNode = list.head;
+		list.head = list.head.next;
+		if (list.length === 1) {
+			list.tail = null;
+		}
+	} else {
+		let current = list.head;
+		for (let i = 0; i < index - 1; i++) {
+			current = current.next;
+		}
+
+		removedNode = current.next;
+		current.next = current.next.next;
+
+		if (index === list.length - 1) {
+			list.tail = current;
+		}
+	}
+
+	list.length--;
+	return removedNode;
 }
 
 list.append(1);
