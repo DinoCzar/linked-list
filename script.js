@@ -106,22 +106,47 @@ const list = createLinkedList();
 
 // Return the first node in the list
 function returnHead() {
-	return list.head.value
+	return list.head.value;
 }
 
 // Return the last node in the list
 function returnTail() {
-	return list.tail.value
+	return list.tail.value;
 }
 
 // Return the length of the list
 function returnSize() {
-    return list.length;
+	return list.length;
 }
 
 // Return the node at the given index
 function nodeIndex(index) {
-    return (list.toArray())[index]
+	return list.toArray()[index];
+}
+
+// Check if the value is in the list
+function contains(value) {
+	const listArray = list.toArray();
+	return listArray.includes(value);
+}
+
+// Return the index of the node if the value is in the list
+function find(value) {
+	const listArray = list.toArray();
+	let index = null;
+
+	listArray.forEach((node, i) => {
+		if (node === value) {
+			index = i;
+		}
+	});
+
+	return index;
+}
+
+// Returns linked list as a string
+function toString() {
+	console.log('to string');
 }
 
 list.append(1);
@@ -140,3 +165,5 @@ console.log(returnHead());
 console.log(returnTail());
 console.log(returnSize());
 console.log(nodeIndex(0));
+console.log(contains(3));
+console.log(find(2))
