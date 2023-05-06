@@ -99,7 +99,6 @@ function createLinkedList() {
 
 			return array;
 		},
-
 	};
 }
 
@@ -107,26 +106,37 @@ const list = createLinkedList();
 
 // Return the first node in the list
 function returnHead() {
-   console.log(list.head.value);
+	return list.head.value
 }
 
 // Return the last node in the list
 function returnTail() {
-    console.log(list.tail.value);
- }
+	return list.tail.value
+}
 
+// Return the length of the list
+function returnSize() {
+    return list.length;
+}
+
+// Return the node at the given index
+function nodeIndex(index) {
+    return (list.toArray())[index]
+}
 
 list.append(1);
 list.append(2);
 list.append(3);
 list.prepend(0);
 console.log(list.toArray()); // Output: [0, 1, 2, 3]
-console.log(list.tail.value)
+console.log(list.tail.value);
 console.log(list.length); // Output: 4
 list.removeFirst();
 list.removeLast();
 console.log(list.toArray()); // Output: [1, 2]
 console.log(list.length); // Output: 2
 
-returnHead()
-returnTail()
+console.log(returnHead());
+console.log(returnTail());
+console.log(returnSize());
+console.log(nodeIndex(0));
