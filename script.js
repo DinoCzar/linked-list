@@ -146,7 +146,9 @@ function find(value) {
 
 // Returns linked list as a string
 function toString() {
-	console.log('to string');
+	const listArray = list.toArray();
+	const formattedArray = listArray.map((value) => `( ${value} )`).join(' -> ');
+	console.log(formattedArray)
 }
 
 list.append(1);
@@ -154,16 +156,3 @@ list.append(2);
 list.append(3);
 list.prepend(0);
 console.log(list.toArray()); // Output: [0, 1, 2, 3]
-console.log(list.tail.value);
-console.log(list.length); // Output: 4
-list.removeFirst();
-list.removeLast();
-console.log(list.toArray()); // Output: [1, 2]
-console.log(list.length); // Output: 2
-
-console.log(returnHead());
-console.log(returnTail());
-console.log(returnSize());
-console.log(nodeIndex(0));
-console.log(contains(3));
-console.log(find(2))
